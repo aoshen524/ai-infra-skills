@@ -19,6 +19,9 @@ In practice, that means:
 - move deep background into `knowledge/`
 - move judgment-heavy domain routing into experts
 
+At the same time, repeated real-world workflows should be distilled aggressively. A good
+skill is a reusable chunk of developer prior, not just a prompt.
+
 If a skill tries to teach the entire domain, it will become bloated and harder for the
 agent to activate reliably.
 
@@ -138,6 +141,24 @@ Use progressive disclosure to keep context tight:
 
 If a single file needs all four layers at once, the design is probably too large.
 
+## Agent-Era Additions
+
+The best new skills often come from one of three sources:
+
+- a painful debugging or optimization loop that repeats
+- a human expert's private checklist
+- an agent workflow that only became reliable after multiple repairs
+
+When one of those stabilizes, extract it into the repo quickly before it drifts back into
+tribal knowledge.
+
+Examples of high-value extractions:
+
+- remote GPU backend workflows
+- crash logging plus offline replay contracts
+- resumable benchmark search loops
+- profile triage that maps kernels back to Python scopes
+
 ## Skill Template Expectations
 
 Every new workflow guide should normally include:
@@ -182,6 +203,7 @@ Before adding a new skill, check:
 1. can most background detail live in `knowledge/` instead?
 1. are there clear adjacent experts or rules to link?
 1. does the skill encode at least one non-obvious gotcha?
+1. does it save the agent from repeating a costly search or debug setup loop?
 
 ## Maintenance Rules
 
@@ -193,6 +215,20 @@ Recommended maintenance behavior:
 - keep examples representative of real tasks
 - version behavior through normal git history instead of silent prompt drift
 - prefer measured utility over "seems good"
+
+## Guardrails for Autonomous Work
+
+Do not treat a successful-looking agent run as sufficient evidence.
+
+Skills that enable large autonomous loops should explicitly preserve:
+
+- checkpoints or resumable artifacts
+- verification steps
+- the smallest trusted harness
+- review points where a human can decide whether the loop is drifting
+
+The repo should help agents move faster, but it should also make it easier for humans to
+spot incorrect momentum.
 
 When a skill becomes too large:
 

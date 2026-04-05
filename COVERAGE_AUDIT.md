@@ -49,6 +49,14 @@ Underrepresented repos were also strengthened during this audit:
 - `SGLang` via `rules/testing.md`
 - `SGLang` via `knowledge/ci-cd/ci-triage-patterns.md`
 
+Recent follow-up research also strengthened SGLang-derived workflow coverage in four
+specific places:
+
+- remote GPU backend execution as a first-class `01-server` workflow
+- CUDA crash logging with offline replay artifacts and graph-safe behavior
+- auto-driven benchmark search with resume-friendly outputs
+- torch profiler triage tied back to Python scopes and known fusion patterns
+
 ## Expertization Status
 
 | Theme | Primary expert(s) | Knowledge ownership | Status |
@@ -78,7 +86,7 @@ Underrepresented repos were also strengthened during this audit:
 | `flashinfer` | JIT architecture, kernel benchmark patterns, crash logging | `knowledge/kernels/jit-architecture.md`, `.claude/skills/05-profiler/benchmark-kernel.md`, `.claude/skills/02-env-source-log/debug-cuda-crash.md` | covered |
 | `nccl` | low-level communication development patterns | `knowledge/distributed/nccl-patterns.md`, `.claude/rules/distributed.md` | covered |
 | `ollama` | model packaging manifest, adapter wiring, runtime troubleshooting | `.claude/skills/03-design/model-onboard.md`, `.claude/skills/01-server/SKILL.md` | covered |
-| `sglang` | CI architecture, auto-benchmark, profiling, crash logging, test-writing conventions, CI bisect | `.claude/skills/02-env-source-log/*`, `.claude/skills/05-profiler/*`, `.claude/skills/06-code-review/ci-failure-triage.md`, `.claude/rules/testing.md`, `knowledge/ci-cd/sglang-ci-system.md` | covered |
+| `sglang` | CI architecture, remote GPU backend workflows, auto-benchmark, profiling, crash logging, test-writing conventions, CI bisect, torch.compile coverage checks | `.claude/skills/01-server/*`, `.claude/skills/02-env-source-log/*`, `.claude/skills/05-profiler/*`, `.claude/skills/06-code-review/ci-failure-triage.md`, `.claude/rules/testing.md`, `knowledge/ci-cd/sglang-ci-system.md`, `knowledge/serving/torch-compile-coverage.md` | covered |
 | `slime` | reward/rollout extension points, eval dataset config, tests/CI integration | `.claude/skills/03-design/add-workflow.md`, `.claude/rules/testing.md` | covered |
 | `torchtitan` | config safety, model structure, numerics validation, experiments isolation, bisect workflow | `.claude/rules/api-config.md`, `.claude/rules/models.md`, `.claude/rules/testing.md`, `.claude/commands/bisect.md`, `.claude/skills/02-env-source-log/build-and-test.md` | covered |
 | `verl` | agent loop design, async server manager, FSDP backend worker patterns | `.claude/skills/03-design/add-workflow.md`, `.claude/skills/03-design/engine-expert.md`, `.claude/agents/fsdp-engine-expert.md` | covered |

@@ -7,7 +7,14 @@ tools: [Bash, Read, Write, Agent]
 
 # Remote Server Usage
 
-This skill covers the essential patterns for working on remote GPU servers in AI infrastructure projects: container-based development, GPU resource management, cluster launching, and session management.
+This skill covers the essential patterns for working on remote GPU servers in AI
+infrastructure projects: remote GPU backends, container-based development, GPU resource
+management, cluster launching, and session management.
+
+Included guides:
+
+- `remote-gpu-backend.md` for using local agent sessions with remote GPU execution hosts
+- `gpu-resource.md` for GPU availability and allocation reasoning
 
 ---
 

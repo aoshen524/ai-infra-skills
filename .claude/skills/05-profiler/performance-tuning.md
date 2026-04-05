@@ -193,3 +193,16 @@ The 2nd operand (operand A) reveals the data source:
 - Keep CUDA graph enabled for performance benchmarking by default
 - Disable only when debugging compatibility issues
 - Some profiling features (tensor statistics, dumps) are automatically skipped during CUDA graph capture
+
+## Serving-Path Integration Check
+
+For inference frameworks, do not stop at kernel-level tuning.
+
+Before claiming a serving optimization worked, verify:
+
+- the optimized path still sits inside the `torch.compile` region when relevant
+- custom op registration did not introduce extra graph breaks
+- profiler evidence still shows the intended path in the real server trace
+
+Use `torch._dynamo.explain` or the framework's graph-break tooling when operator-level
+gains disappear after integration.

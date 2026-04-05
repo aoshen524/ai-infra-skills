@@ -47,6 +47,18 @@ export SGLANG_KERNEL_API_LOGDEST=debug.log
 python my_script.py
 ```
 
+### What To Instrument First
+
+The highest-value API boundaries are the ones right before custom GPU work:
+
+- custom-op registration entrypoints
+- wrapper functions around attention, linear, norm, or quantization kernels
+- `torch.ops.<namespace>.*` hot paths
+- JIT-kernel launch wrappers
+
+If logging only exists around high-level request code, the crash will still be hard to
+localize.
+
 ### Level 10: Crash-Safe Tensor Dumps
 
 At level 10, inputs are saved to disk BEFORE execution. If the kernel crashes, the dump directory still contains `inputs.pt` and `metadata.json` with `execution_status: "exception"`.
@@ -57,6 +69,21 @@ export SGLANG_KERNEL_API_DUMP_DIR=/tmp/kernel_dumps
 ```
 
 **Note**: Tensor dumps are skipped during CUDA graph capture (copying tensors to CPU is not allowed during capture). Disable CUDA graph for debug sessions requiring level 10 dumps.
+
+### Offline Replay Contract
+
+Level 10 is most useful when it turns a transient crash into a replayable sample.
+
+Preserve at least:
+
+- `inputs.pt`
+- `metadata.json`
+- function name
+- exception type
+- execution status
+
+That artifact set lets a later debug session focus on reproduction instead of trying to
+recreate the original serving state by hand.
 
 ---
 
@@ -203,6 +230,8 @@ static_assert(BLOCK_SIZE % 32 == 0, "BLOCK_SIZE must be multiple of warp size");
 4. **Compare before/after** — last successful API call (has outputs) vs first failed (no outputs) = crash point
 5. **Disable logging in production** — zero overhead when disabled (decorator returns original function)
 6. **Disable CUDA graph for debug** — level 10 tensor dumps require CPU copies not allowed during graph capture
+7. **Climb the debug ladder** — API logging first, then compute-sanitizer, then `cuda-gdb`, then kernel `printf`
+8. **Preserve the failing call boundary** — the point is not extra logs, it is a durable artifact for offline analysis
 
 ---
 

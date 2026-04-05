@@ -30,6 +30,7 @@ Primary knowledge:
 Secondary knowledge:
 
 - `knowledge/serving/disaggregated-serving.md`
+- `knowledge/serving/torch-compile-coverage.md`
 - `knowledge/distributed/fsdp-engine-patterns.md`
 
 ## Adjacent Experts

@@ -79,6 +79,7 @@ ai-infra-skills/
     ├── serving/
     │   ├── gateway-serving-patterns.md # Gateway + session + reward writeback
     │   ├── disaggregated-serving.md    # Prefill/decode separation and KV transfer
+    │   ├── torch-compile-coverage.md   # Graph-break and custom-op integration checks
     │   └── model-onboarding-debug.md   # Model load and conversion debug loop
     └── ci-cd/
         ├── ci-triage-patterns.md   # Failure bucketing and bisection
@@ -88,7 +89,7 @@ ai-infra-skills/
 ## Skill Categories
 
 ### 01-server: Remote Server & Cluster Management
-Container-based development, GPU resource monitoring, multi-node cluster launching, session management. Essential for any GPU-accelerated project.
+Container-based development, remote GPU backend usage, GPU resource monitoring, multi-node cluster launching, and session management. Essential for any GPU-accelerated project.
 
 ### 02-env-source-log: Environment, Build & Debug
 Build/install workflows, CI/CD pipeline patterns, CUDA crash debugging with API logging, compute-sanitizer, and kernel printf.
@@ -100,7 +101,7 @@ Feature evaluation frameworks, module design patterns, model onboarding workflow
 Structured implementation planning with domain classification, risk assessment, and phased execution. Domain-specific review checklists.
 
 ### 05-profiler: Performance Profiling & Tuning
-Kernel benchmarking (CUPTI/Events), SM90 block size tuning, SASS/MMA analysis, auto-benchmark workflows, Chrome trace profiling.
+Kernel benchmarking (CUPTI/Events), SM90 block size tuning, SASS/MMA analysis, auto-benchmark workflows, and two-phase Chrome trace triage.
 
 ### 06-code-review: Code Review & CI
 PR workflows with dynamic agent allocation, Conventional Commits, CI failure triage, git bisect for regressions.
@@ -172,6 +173,7 @@ Add to your project's `.claude/settings.json`:
 Content is synthesized and generalized from the following projects:
 - FlashAttention / FlashInfer — kernel debugging, benchmarking, SASS analysis
 - SGLang — CI system, auto-benchmark, CUDA crash debugging
+- SGLang field workflows — remote GPU backend usage, auto-driven benchmark search, torch profiler triage, and torch.compile coverage checks
 - AReaL — PR review, agents, algorithms, distributed debugging, MoE engine patterns
 - AReaL — proxy gateway integration, online RL session design, tree training
 - AReaL — launcher/scheduler contracts and AI-assisted development structure
@@ -187,5 +189,6 @@ Content is synthesized and generalized from the following projects:
 - sparse-mask-attention — constrained kernel autoresearch loop and optimization logging
 - b300-benchmarks — hardware spec grounding, interconnect validation, and new-hardware software support notes
 - NVIDIA data center GPU documentation — current generation memory, NVLink, and Blackwell compatibility grounding
+- recent SGLang workflow writeups — remote GPU backend usage, auto-driven benchmark loops, CUDA crash artifact capture, and trace-to-action profiler triage
 
 See [COVERAGE_AUDIT.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/COVERAGE_AUDIT.md) for the repo-to-location coverage matrix.

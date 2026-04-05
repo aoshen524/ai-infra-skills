@@ -29,6 +29,7 @@ Use it for:
 - processor or tokenizer assets are wrong
 - config translation missed a key such as rope or attention settings
 - runtime launches with the wrong `world_size`
+- the optimized serving path is excluded from `torch.compile` because a wrapper or custom op integration introduces graph breaks
 
 ## Fast Iteration Rules
 
@@ -36,6 +37,7 @@ Use it for:
 - test `world_size=1` before multi-rank launch
 - separate conversion, load, and generation when possible
 - keep debug-only reductions labeled so they are not confused with production config
+- if an optimized op is integrated, compare end-to-end performance with graph-break evidence before blaming the kernel itself
 
 ## Review Questions
 
