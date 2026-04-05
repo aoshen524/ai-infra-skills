@@ -2,6 +2,17 @@
 
 A collection of professional Claude Code skills, agents, and knowledge bases for 12 major open-source AI infrastructure frameworks.
 
+## Fast Start
+
+If you only open one file first, open [INDEX.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/INDEX.md).
+
+Recommended navigation order:
+
+1. [INDEX.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/INDEX.md)
+1. [EXPERT_KNOWLEDGE_MAP.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/EXPERT_KNOWLEDGE_MAP.md)
+1. matching `.claude/skills/*` guide
+1. matching `knowledge/*` document
+
 ## Target Frameworks
 
 | Domain | Projects |
@@ -52,8 +63,10 @@ ai-infra-skills/
 │       ├── create-pr.md            # /create-pr — Rebase + squash + PR
 │       └── bisect.md               # /bisect — Git bisect regression
 │
+├── INDEX.md                        # Fastest task-routing entrypoint
 ├── COVERAGE_AUDIT.md               # 12-repo coverage matrix and placement audit
 ├── EXPERT_KNOWLEDGE_MAP.md         # Canonical expert-to-knowledge ownership map
+├── meta/                           # Historical or maintenance-only docs
 └── knowledge/                      # Deep technical references
     ├── distributed/
     │   ├── debug-distributed.md    # Distributed training debugging
@@ -132,6 +145,7 @@ See [EXPERT_KNOWLEDGE_MAP.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills
 
 Use this order when navigating the repo:
 
+1. open `INDEX.md` if task routing is still unclear
 1. find the closest expert for the problem domain
 1. read the expert's owned knowledge documents
 1. run the matching skill or command for workflow execution

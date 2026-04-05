@@ -9,147 +9,88 @@ tools: [Read, Grep, Glob, Bash]
 
 <!-- source: AReaL, TensorRT-LLM -->
 
-This skill reviews and creates implementation plans for complex tasks, combining architectural planning with adversarial review. It covers:
-- Structured plan creation with scope analysis
-- Domain-based risk classification
-- Phased review with checklist validation
-- Independent adversarial review of completed work
+This category is for planning and review structure, not domain knowledge itself.
 
----
+Use it to:
+
+- turn a multi-file task into a compact execution plan
+- classify change risk by domain
+- review completed work against explicit checklists
 
 ## When to Activate
 
-Use this skill **proactively** when:
-- **Planning multi-file changes** (3+ files affected)
-- **Designing new features** (workflow, dataset, reward, engine)
-- **Architectural decisions needed**
-- **Reviewing completed onboarding / integration work** against a checklist
+Use this category when:
 
-Do **not** use for:
-- Single-file changes with obvious implementation
-- Typo fixes, simple renames, documentation updates
-- Pure research/exploration
+- the task spans multiple files or modules
+- a new workflow, engine path, or API surface is being added
+- you need a risk-aware implementation plan before coding
+- you need strict post-change review against a checklist
 
----
+Do not use it for:
 
-## Planning Process
+- obvious single-file edits
+- typo or prose-only changes
+- deep domain reasoning that should go to an expert first
 
-### Phase 1: Understanding
+## Included Guides
 
-1. **Clarify requirements** - What exactly needs to be done?
-2. **Identify scope** - Which files/modules are affected?
-3. **Find existing patterns** - How is similar functionality implemented?
+| Guide | Use For |
+| ----- | ------- |
+| [review-domains.md](review-domains.md) | detect domains, signals, and review depth |
+| [review-templates.md](review-templates.md) | run domain-specific checklist review |
 
-#### Clarifying Requirements
+## Planning Contract
 
-Before planning, identify missing critical information. Ask **specific** questions with options, not open-ended ones:
+Every useful plan should answer only the essentials:
 
-| Request Type | Key Questions to Ask |
-|---|---|
-| New feature | Input/output format? Integration point with existing code? |
-| Refactor | Change interface or just implementation? Backward compat? |
-| Bug fix | Reproduction steps? Expected vs actual behavior? |
-| Performance | Where is the bottleneck? Acceptable tradeoffs? Target metric? |
+1. what is changing
+1. which files or modules are affected
+1. what existing pattern should be copied
+1. what the main risk is
+1. how the result will be validated
 
-**Rules:**
-- Ask max 2-3 questions at a time
-- Only ask what **affects implementation decisions**
-- If user already provided info, don't ask again
-- When confident enough to proceed, proceed
+Use a quick path for small multi-file changes and a fuller plan only when there are real
+risks or multiple phases.
 
-### Phase 2: Research
+## Review Contract
 
-Search the codebase systematically:
+When this category is used for review:
 
-1. **Find similar implementations** - Search for classes/functions with similar patterns
-2. **Find callers/dependencies** - Who calls the API you're modifying? What will break?
-3. **Check tests** - Does the target file have tests? What test patterns are used?
-4. **Check configuration** - Are there config dataclasses or CLI args to modify?
+1. do not trust summary claims without reading files
+1. cite concrete evidence for pass and fail decisions
+1. mark ambiguity as fail or not-yet-proven
+1. keep output checklist-shaped instead of essay-shaped
 
-### Phase 3: Plan Output
+## Minimal Output Shapes
 
-**For simple tasks (2-3 files, clear implementation)** - use Quick Path:
+### Plan
 
 ```markdown
 ## Summary
-[1-2 sentences]
 
 ## Changes
-| File | Change |
-|------|--------|
-| path/file.py | What to do |
 
 ## Steps
-1. Step 1
-2. Step 2
-```
-
-**For complex tasks** - use Full Plan:
-
-```markdown
-## Summary
-[1-2 sentence description]
-
-## Changes
-| File | Action | Purpose |
-|------|--------|---------|
-| path/to/file.py | Modify | Add X functionality |
-| path/to/new.py | Create | New Y implementation |
-
-## Steps
-1. Step 1 - Description
-2. Step 2 - Description
-
-## Patterns to Follow
-- `path/to/example.py:123` - Reference for X
 
 ## Risks
-- Risk 1: [description] -> Mitigation: [how to handle]
 
 ## Testing
-- How to verify the changes work
 ```
 
-**Section guidelines:**
-- `Patterns to Follow`: Include only if there are specific code references
-- `Risks`: Include only if there are non-obvious risks
-- `Testing`: Always include, even if just "run existing tests"
-
----
-
-## Adversarial Review Mode
-
-When reviewing completed work against a checklist, adopt an **adversarial** posture:
-
-1. **Do NOT trust claims from the caller.** Read every file yourself.
-2. **Cite file:line_number** for every PASS and FAIL.
-3. **Be strict.** If something is ambiguous or borderline, mark it FAIL and explain why.
-4. **A PASS result means EVERY SINGLE item passed.** Even one FAIL means overall FAIL.
-5. If a check is not applicable, mark it N/A with justification.
-
-### Review Output Format
+### Review
 
 ```text
 REVIEW RESULT: PASS | FAIL
 
-=== Section A ===
-A1  PASS  file.py:45 - evidence
-A2  FAIL  file.py:120 - what's wrong
-
-=== Summary ===
-PASSED: X/Y
-FAILED: Z/Y
-
-Failed items requiring fixes:
-1. A2 - Description (file.py:120)
+=== Section ===
+item  PASS|FAIL  file:line  evidence
 ```
 
----
+## Routing Rules
 
-## Domain Classification
+- if the task is domain-heavy, consult the relevant expert before finalizing the plan
+- use `review-domains.md` to detect the right risk class
+- use `review-templates.md` to avoid inventing checklists from scratch
 
-See [review-domains.md](review-domains.md) for the full domain taxonomy with L1 domains, L2 signals, and risk levels.
-
-## Review Templates
-
-See [review-templates.md](review-templates.md) for domain-specific review checklists and add-on templates.
+This category should stay short. The detailed taxonomy and checklists live in the two
+child guides.
