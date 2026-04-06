@@ -20,6 +20,10 @@ The repository also now has an explicit expert-owned knowledge layer via
 `EXPERT_KNOWLEDGE_MAP.md`, so domain experts, knowledge references, and workflow skills
 can be navigated in a stable order.
 
+The command layer now also absorbs the autonomous experiment-loop pattern through
+`.claude/commands/solo.md`, so long-running implementation and keep/discard benchmark
+loops do not need a separate command family.
+
 Hardware coverage was also expanded into an expert-owned layer instead of staying as
 ad hoc benchmark context:
 

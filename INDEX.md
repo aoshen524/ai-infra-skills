@@ -25,6 +25,7 @@ document.
 | CUDA crash, build, test, CI log reading | `.claude/skills/02-env-source-log/SKILL.md` | child guides in `02-env-source-log/` |
 | rollout, reward, agent loop, online RL contract | `.claude/agents/rl-workflow-expert.md` | `knowledge/rl/*`, `.claude/skills/03-design/add-workflow.md` |
 | plan review or multi-file implementation planning | `.claude/skills/04-review-plan/SKILL.md` | `review-domains.md`, `review-templates.md` |
+| long autonomous development or metric-driven experiment loop | `.claude/commands/solo.md` | matching expert, `knowledge/*`, `.claude/skills/*`, `solo_session/*` |
 | PR review, CI triage, commit / PR flow | `.claude/skills/06-code-review/SKILL.md` | `.claude/commands/*`, `knowledge/ci-cd/*` |
 
 ## Fast Paths
@@ -36,6 +37,7 @@ If you already know the problem family:
 - serving: `knowledge/serving/torch-compile-coverage.md`
 - hardware: `knowledge/hardware/nvidia-datacenter-gpu-matrix.md`
 - CI: `knowledge/ci-cd/ci-triage-patterns.md`
+- long-running implementation or benchmark loop: `.claude/commands/solo.md`
 - topic-level deep reference routing: `KNOWLEDGE_INDEX.md`
 
 ## Normal Runtime Files

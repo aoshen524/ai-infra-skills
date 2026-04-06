@@ -59,6 +59,7 @@ ai-infra-skills/
 │   │   └── code-verifier.md        # Utility verification agent
 │   │
 │   └── commands/                   # Slash commands
+│       ├── solo.md                 # /solo — Autonomous implementation or experiment loop
 │       ├── commit.md               # /commit — Conventional Commits
 │       ├── review-pr.md            # /review-pr — Dynamic PR review
 │       ├── create-pr.md            # /create-pr — Rebase + squash + PR
@@ -152,6 +153,7 @@ Use this order when navigating the repo:
 1. find the closest expert for the problem domain
 1. read the expert's owned knowledge documents
 1. run the matching skill or command for workflow execution
+1. use `/solo` for long autonomous implementation or fixed-harness experiment loops
 1. use `.claude/rules/` as the final constraint and review layer
 
 ## Skill Design Principles
@@ -194,6 +196,7 @@ Content is synthesized and generalized from the following projects:
 - AReaL — PR review, agents, algorithms, distributed debugging, MoE engine patterns
 - AReaL — proxy gateway integration, online RL session design, tree training
 - AReaL — launcher/scheduler contracts and AI-assisted development structure
+- autoresearch — baseline-first autonomous experiment loop, keep/discard discipline, and results-ledger persistence
 - TensorRT-LLM — CI failure triage, model debugging
 - torchtitan — git bisect workflow
 - NCCL — development patterns, code style
