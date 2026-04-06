@@ -9,6 +9,7 @@ If you only open one file first, open [INDEX.md](/home/ubuntu/scipts/verl-ground
 Recommended navigation order:
 
 1. [INDEX.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/INDEX.md)
+1. [KNOWLEDGE_INDEX.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/KNOWLEDGE_INDEX.md) when the task needs deep reference routing
 1. [EXPERT_KNOWLEDGE_MAP.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/EXPERT_KNOWLEDGE_MAP.md)
 1. matching `.claude/skills/*` guide
 1. matching `knowledge/*` document
@@ -64,6 +65,7 @@ ai-infra-skills/
 │       └── bisect.md               # /bisect — Git bisect regression
 │
 ├── INDEX.md                        # Fastest task-routing entrypoint
+├── KNOWLEDGE_INDEX.md              # Topic-level index for the knowledge tree
 ├── COVERAGE_AUDIT.md               # 12-repo coverage matrix and placement audit
 ├── EXPERT_KNOWLEDGE_MAP.md         # Canonical expert-to-knowledge ownership map
 ├── meta/                           # Historical or maintenance-only docs
@@ -146,6 +148,7 @@ See [EXPERT_KNOWLEDGE_MAP.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills
 Use this order when navigating the repo:
 
 1. open `INDEX.md` if task routing is still unclear
+1. open `KNOWLEDGE_INDEX.md` when you need a topic-level reference shortcut into `knowledge/`
 1. find the closest expert for the problem domain
 1. read the expert's owned knowledge documents
 1. run the matching skill or command for workflow execution

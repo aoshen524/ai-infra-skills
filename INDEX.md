@@ -8,6 +8,7 @@ document.
 ## Read Order
 
 1. start here for task routing
+1. open `KNOWLEDGE_INDEX.md` if you need deep reference material but do not yet know which topic owns it
 1. open `EXPERT_KNOWLEDGE_MAP.md` if the task is domain-heavy
 1. open the selected skill guide for workflow execution
 1. use `CLAUDE.md` only when you need the full repo structure
@@ -35,12 +36,14 @@ If you already know the problem family:
 - serving: `knowledge/serving/torch-compile-coverage.md`
 - hardware: `knowledge/hardware/nvidia-datacenter-gpu-matrix.md`
 - CI: `knowledge/ci-cd/ci-triage-patterns.md`
+- topic-level deep reference routing: `KNOWLEDGE_INDEX.md`
 
 ## Normal Runtime Files
 
 These are the files agents should prefer during normal task execution:
 
 - `INDEX.md`
+- `KNOWLEDGE_INDEX.md`
 - `CLAUDE.md`
 - `EXPERT_KNOWLEDGE_MAP.md`
 - `.claude/agents/*`
