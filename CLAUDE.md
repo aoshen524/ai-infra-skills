@@ -39,10 +39,11 @@ ai-infra-skills/
 │   ├── skills/                     # Interactive skills (invoked by user or triggered)
 │   │   ├── 01-server/              # Container dev, GPU mgmt, cluster setup
 │   │   ├── 02-env-source-log/      # Build, CI, CUDA crash debugging
-│   │   ├── 03-design/              # Feature evaluation, architecture design
+│   │   ├── 03-design/              # Feature evaluation, architecture design, memory planning
 │   │   ├── 04-review-plan/         # Plan review, domain classification
 │   │   ├── 05-profiler/            # Benchmarking, NCU analysis, tuning
-│   │   └── 06-code-review/         # PR workflow, CI failure triage
+│   │   ├── 06-code-review/         # PR workflow, CI failure triage
+│   │   └── 07-communication/       # Flowcharts and slide decks for technical communication
 │   │
 │   ├── agents/                     # Domain experts plus utility agents
 │   │   ├── algorithm-expert.md     # RL algorithm behavior and tuning
@@ -66,6 +67,7 @@ ai-infra-skills/
 │       └── bisect.md               # /bisect — Git bisect regression
 │
 ├── INDEX.md                        # Fastest task-routing entrypoint
+├── README.md                       # GitHub-facing repo overview and acknowledgements
 ├── KNOWLEDGE_INDEX.md              # Topic-level index for the knowledge tree
 ├── COVERAGE_AUDIT.md               # 12-repo coverage matrix and placement audit
 ├── EXPERT_KNOWLEDGE_MAP.md         # Canonical expert-to-knowledge ownership map
@@ -75,12 +77,14 @@ ai-infra-skills/
     │   ├── debug-distributed.md    # Distributed training debugging
     │   ├── nccl-patterns.md        # NCCL development patterns
     │   ├── fsdp-engine-patterns.md # FSDP engine integration reference
+    │   ├── megatron-memory-planning.md # Pre-launch memory-fit and stage-balance planning
     │   ├── megatron-engine-patterns.md # Megatron engine reference
     │   ├── moe-engine-patterns.md  # MoE engine integration reference
     │   └── launcher-scheduler-patterns.md # Cluster launch contracts
     ├── kernels/
     │   ├── debug-2cta-hang.md      # 2CTA kernel hang debugging
     │   ├── kernel-autoresearch-loop.md # Constrained iterative kernel optimization
+    │   ├── tilelang-kernel-patterns.md # TileLang DSL kernel design and debugging
     │   ├── tma-sync-hazard.md      # TMA racecheck false positives
     │   ├── sass-mma-analysis.md    # SASS/HGMMA instruction analysis
     │   └── jit-architecture.md     # JIT compilation patterns
@@ -90,6 +94,7 @@ ai-infra-skills/
     │   └── b300-blackwell-notes.md # New-hardware bring-up and software maturity notes
     ├── rl/
     │   ├── algorithm-patterns.md   # PPO-family behavior and tuning
+    │   ├── slime-repo-navigation.md # Fast route to SLIME docs, examples, and source hotspots
     │   ├── workflow-contracts.md   # Workflow / rollout / reward contracts
     │   └── tree-training.md        # Prefix sharing and tree attention patterns
     ├── serving/
@@ -111,16 +116,20 @@ Container-based development, remote GPU backend usage, GPU resource monitoring, 
 Build/install workflows, CI/CD pipeline patterns, CUDA crash debugging with API logging, compute-sanitizer, and kernel printf.
 
 ### 03-design: Architecture & Design
-Feature evaluation frameworks, module design patterns, model onboarding workflows, gateway-based agentic RL integration, engine expert guidance for inference and training systems.
+Feature evaluation frameworks, module design patterns, model onboarding workflows, TileLang kernel planning, SLIME repo navigation, Megatron memory-fit estimation, gateway-based agentic RL integration, and engine expert guidance for inference and training systems.
 
 ### 04-review-plan: Plan & Review
-Structured implementation planning with domain classification, risk assessment, and phased execution. Domain-specific review checklists.
+Structured implementation planning with domain classification, risk assessment, phased execution, and upstream-refresh audits against the tracked source repos.
 
 ### 05-profiler: Performance Profiling & Tuning
 Kernel benchmarking (CUPTI/Events), SM90 block size tuning, SASS/MMA analysis, auto-benchmark workflows, and two-phase Chrome trace triage.
 
 ### 06-code-review: Code Review & CI
 PR workflows with dynamic agent allocation, Conventional Commits, CI failure triage, git bisect for regressions.
+
+### 07-communication: Technical Communication
+Technical flowcharts and clean architecture slide decks for sharing AI infra designs,
+results, and system contracts.
 
 ## Rules (Auto-Loaded)
 
@@ -182,6 +191,7 @@ Add to your project's `.claude/settings.json`:
   "additionalWorkingDirectories": [
     "ai-infra-skills/.claude/skills/03-design",
     "ai-infra-skills/.claude/skills/04-review-plan",
+    "ai-infra-skills/.claude/skills/07-communication",
     "ai-infra-skills/.claude/agents"
   ]
 }
@@ -193,6 +203,7 @@ Content is synthesized and generalized from the following projects:
 - FlashAttention / FlashInfer — kernel debugging, benchmarking, SASS analysis
 - SGLang — CI system, auto-benchmark, CUDA crash debugging
 - SGLang field workflows — remote GPU backend usage, auto-driven benchmark search, torch profiler triage, and torch.compile coverage checks
+- TileLang — TileLang DSL kernel design patterns, shared-memory layout defaults, and cross-target kernel workflow guidance
 - AReaL — PR review, agents, algorithms, distributed debugging, MoE engine patterns
 - AReaL — proxy gateway integration, online RL session design, tree training
 - AReaL — launcher/scheduler contracts and AI-assisted development structure
@@ -201,14 +212,22 @@ Content is synthesized and generalized from the following projects:
 - torchtitan — git bisect workflow
 - NCCL — development patterns, code style
 - Megatron-LM — container dev, uv, API compatibility, CI policy
+- Megatron memory estimator — model-fit estimation and parallelism planning heuristics
 - vLLM — async serving, persistent batch, disaggregated P/D serving
 - Ollama — model packaging, runtime troubleshooting
 - veRL — agent loop and hybrid training-serving workflow patterns
 - SLIME — reward/rollout/eval dataset extension patterns
+- SLIME docs and examples — repo navigation, source hotspots, and example-family routing
 - Liger-Kernel — kernel benchmark structure, parity-first performance testing
 - sparse-mask-attention — constrained kernel autoresearch loop and optimization logging
 - b300-benchmarks — hardware spec grounding, interconnect validation, and new-hardware software support notes
 - NVIDIA data center GPU documentation — current generation memory, NVLink, and Blackwell compatibility grounding
+- yzlnew/infra-skills — TileLang, Megatron memory-planning, SLIME navigation, TikZ flowchart, and Material You slide skill patterns
 - recent SGLang workflow writeups — remote GPU backend usage, auto-driven benchmark loops, CUDA crash artifact capture, and trace-to-action profiler triage
+
+The maintenance layer also tracks a 13-repo upstream refresh workflow:
+
+- 12 core framework repos covered by `COVERAGE_AUDIT.md`
+- `yzlnew/infra-skills` as an additional upstream skills-source repo
 
 See [COVERAGE_AUDIT.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/COVERAGE_AUDIT.md) for the repo-to-location coverage matrix.

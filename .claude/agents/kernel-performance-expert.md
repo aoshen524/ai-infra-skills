@@ -28,6 +28,7 @@ Primary knowledge:
 - `knowledge/kernels/kernel-autoresearch-loop.md`
 - `knowledge/kernels/jit-architecture.md`
 - `knowledge/kernels/sass-mma-analysis.md`
+- `knowledge/kernels/tilelang-kernel-patterns.md`
 - `knowledge/kernels/tma-sync-hazard.md`
 
 Secondary knowledge:

@@ -38,6 +38,7 @@ Do not use it for:
 | ----- | ------- |
 | [review-domains.md](review-domains.md) | detect domains, signals, and review depth |
 | [review-templates.md](review-templates.md) | run domain-specific checklist review |
+| [upstream-refresh.md](upstream-refresh.md) | audit the 13 tracked upstream repos and decide what to absorb into this repo |
 
 ## Planning Contract
 

@@ -28,6 +28,7 @@ Use this agent for Megatron engine usage and integration guidance:
 Primary knowledge:
 
 - `knowledge/distributed/megatron-engine-patterns.md`
+- `knowledge/distributed/megatron-memory-planning.md`
 
 Secondary knowledge:
 
@@ -39,6 +40,7 @@ Secondary knowledge:
 - `distributed-systems-expert` for collective and rank-layout correctness
 - `moe-engine-expert` for sparse EP or ETP interactions
 - `fsdp-engine-expert` when PP may be unnecessary complexity
+- `rl-workflow-expert` when the Megatron plan is inside a rollout-training system like SLIME
 
 ## Out of Scope
 

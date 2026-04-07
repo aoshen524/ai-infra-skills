@@ -20,7 +20,10 @@ Patterns and workflows for designing and implementing new features in AI infrast
 |-------|-------------|
 | [model-onboard.md](model-onboard.md) | Adding a new model to an inference engine or serving framework |
 | [add-kernel.md](add-kernel.md) | Implementing a new CUDA kernel (JIT or AOT) |
+| [tilelang-kernel.md](tilelang-kernel.md) | Implementing or debugging a TileLang-based kernel |
 | [add-workflow.md](add-workflow.md) | Adding an RL workflow, reward function, or rollout function |
+| [slime-workflows.md](slime-workflows.md) | Navigating and extending SLIME workflows and examples |
+| [megatron-memory-estimation.md](megatron-memory-estimation.md) | Planning Megatron TP/PP/EP/CP fits before launch |
 | [agentic-rl-gateway.md](agentic-rl-gateway.md) | Integrating external agents or human sessions into an RL loop through a proxy gateway |
 | [engine-expert.md](engine-expert.md) | Choosing and configuring distributed training engines and RL algorithms |
 

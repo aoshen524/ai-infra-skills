@@ -6,6 +6,11 @@ This document records how the 12 source repositories are represented inside
 `ai-infra-skills`, where their highest-value patterns landed, and which areas are
 future-expansion candidates rather than current blockers.
 
+For recurring maintenance against the broader 13-repo upstream set, use
+`.claude/skills/04-review-plan/upstream-refresh.md`. That workflow treats the 12 core
+framework repos here plus `yzlnew/infra-skills` as the tracked upstream inputs for refresh
+work.
+
 ## Audit Result
 
 The repository now covers all 12 source repos across:
@@ -60,6 +65,14 @@ specific places:
 - CUDA crash logging with offline replay artifacts and graph-safe behavior
 - auto-driven benchmark search with resume-friendly outputs
 - torch profiler triage tied back to Python scopes and known fusion patterns
+
+A second external skills repo was also integrated into the current architecture rather than
+kept as a parallel tree:
+
+- `yzlnew/infra-skills` -> TileLang kernel guidance
+- `yzlnew/infra-skills` -> Megatron memory-planning workflow
+- `yzlnew/infra-skills` -> SLIME repo navigation and workflow routing
+- `yzlnew/infra-skills` -> technical communication support for TikZ and slide decks
 
 ## Expertization Status
 
