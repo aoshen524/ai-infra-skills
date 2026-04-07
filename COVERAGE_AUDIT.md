@@ -2,18 +2,18 @@
 
 Last audited: 2026-04-05
 
-This document records how the 12 source repositories are represented inside
+This document records how the 14 source repositories are represented inside
 `ai-infra-skills`, where their highest-value patterns landed, and which areas are
 future-expansion candidates rather than current blockers.
 
-For recurring maintenance against the broader 13-repo upstream set, use
-`.claude/skills/04-review-plan/upstream-refresh.md`. That workflow treats the 12 core
-framework repos here plus `yzlnew/infra-skills` as the tracked upstream inputs for refresh
+For recurring maintenance against the broader 15-repo upstream set, use
+`.claude/skills/04-review-plan/upstream-refresh.md`. That workflow treats the 14 source
+repos covered here plus `yzlnew/infra-skills` as the tracked upstream inputs for refresh
 work.
 
 ## Audit Result
 
-The repository now covers all 12 source repos across:
+The repository now covers all 14 source repos across:
 
 - `rules` for durable constraints
 - `skills` for repeatable workflows
@@ -55,8 +55,13 @@ Underrepresented repos were also strengthened during this audit:
 - `Ollama` via `03-design/model-onboard.md`
 - `Megatron-LM` via `rules/api-config.md`
 - `Megatron-LM` via `knowledge/distributed/megatron-engine-patterns.md`
+- `OpenRLHF` via `knowledge/rl/workflow-contracts.md`
+- `OpenRLHF` via `knowledge/serving/gateway-serving-patterns.md`
 - `SGLang` via `rules/testing.md`
 - `SGLang` via `knowledge/ci-cd/ci-triage-patterns.md`
+- `XTuner` via `knowledge/rl/dataset-pipeline-contracts.md`
+- `XTuner` via `knowledge/serving/gateway-serving-patterns.md`
+- `XTuner` via `.claude/skills/03-design/dataset-pipeline.md`
 
 Recent follow-up research also strengthened SGLang-derived workflow coverage in four
 specific places:
@@ -103,9 +108,11 @@ kept as a parallel tree:
 | `flashinfer` | JIT architecture, kernel benchmark patterns, crash logging | `knowledge/kernels/jit-architecture.md`, `.claude/skills/05-profiler/benchmark-kernel.md`, `.claude/skills/02-env-source-log/debug-cuda-crash.md` | covered |
 | `nccl` | low-level communication development patterns | `knowledge/distributed/nccl-patterns.md`, `.claude/rules/distributed.md` | covered |
 | `ollama` | model packaging manifest, adapter wiring, runtime troubleshooting | `.claude/skills/03-design/model-onboard.md`, `.claude/skills/01-server/SKILL.md` | covered |
+| `OpenRLHF` | RLHF workflow surfaces, rollout-train orchestration, OpenAI-compatible agent execution, and serving-coupled RL system patterns | `.claude/agents/rl-workflow-expert.md`, `.claude/skills/03-design/add-workflow.md`, `knowledge/rl/workflow-contracts.md`, `knowledge/serving/gateway-serving-patterns.md` | covered |
 | `sglang` | CI architecture, remote GPU backend workflows, auto-benchmark, profiling, crash logging, test-writing conventions, CI bisect, torch.compile coverage checks | `.claude/skills/01-server/*`, `.claude/skills/02-env-source-log/*`, `.claude/skills/05-profiler/*`, `.claude/skills/06-code-review/ci-failure-triage.md`, `.claude/rules/testing.md`, `knowledge/ci-cd/sglang-ci-system.md`, `knowledge/serving/torch-compile-coverage.md` | covered |
 | `slime` | reward/rollout extension points, eval dataset config, tests/CI integration | `.claude/skills/03-design/add-workflow.md`, `.claude/rules/testing.md` | covered |
 | `torchtitan` | config safety, model structure, numerics validation, experiments isolation, bisect workflow | `.claude/rules/api-config.md`, `.claude/rules/models.md`, `.claude/rules/testing.md`, `.claude/commands/bisect.md`, `.claude/skills/02-env-source-log/build-and-test.md` | covered |
+| `XTuner` | dataset contracts, cache-aware tokenization, packing, sampler and resume architecture, plus rollout-worker memory lifecycle signals for large-scale training systems | `knowledge/rl/dataset-pipeline-contracts.md`, `knowledge/serving/gateway-serving-patterns.md`, `.claude/skills/03-design/dataset-pipeline.md`, `.claude/agents/rl-workflow-expert.md` | covered |
 | `verl` | agent loop design, async server manager, FSDP backend worker patterns | `.claude/skills/03-design/add-workflow.md`, `.claude/skills/03-design/engine-expert.md`, `.claude/agents/fsdp-engine-expert.md` | covered |
 | `vllm` | async serving, persistent batch, PD disaggregation and KV transfer | `.claude/skills/01-server/SKILL.md`, `.claude/skills/03-design/model-onboard.md` | covered |
 
@@ -170,7 +177,7 @@ These are future-expansion candidates after the current expertization pass:
 
 This audit verified:
 
-- all 12 repos are represented
+- all 14 repos are represented
 - all canonical expert themes have at least one owned knowledge document
 - all critical `.claude` assets found during audit are either absorbed or intentionally generalized elsewhere
 - the missing referenced files were created

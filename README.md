@@ -92,10 +92,12 @@ Core framework and system references include:
 - [AReaL](https://github.com/inclusionAI/AReaL)
 - [Megatron-LM](https://github.com/NVIDIA/Megatron-LM)
 - [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)
+- [XTuner](https://github.com/InternLM/xtuner)
 - [FlashAttention](https://github.com/Dao-AILab/flash-attention)
 - [FlashInfer](https://github.com/flashinfer-ai/flashinfer)
 - [NCCL](https://github.com/NVIDIA/nccl)
 - [Ollama](https://github.com/ollama/ollama)
+- [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF)
 - [SGLang](https://github.com/sgl-project/sglang)
 - [SLIME](https://github.com/THUDM/slime)
 - [veRL](https://github.com/volcengine/verl)
@@ -104,6 +106,7 @@ Core framework and system references include:
 
 Additional supporting references include:
 
+- [Awesome-ML-SYS-Tutorial](https://github.com/zhaochenyang20/Awesome-ML-SYS-Tutorial)
 - [TileLang](https://github.com/tile-ai/tilelang)
 - [Liger-Kernel](https://github.com/linkedin/Liger-Kernel)
 - [sparse-mask-attention](https://github.com/xgbj/sparse-mask-attention)

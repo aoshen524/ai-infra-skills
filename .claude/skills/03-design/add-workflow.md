@@ -2,7 +2,7 @@
 
 Patterns for adding new RL workflows, rollout functions, and reward functions to training frameworks.
 
-<!-- source: AReaL (RolloutWorkflow, multi-turn, RLVR), SLIME (rollout functions, reward functions, dynamic filters) -->
+<!-- source: AReaL (RolloutWorkflow, multi-turn, RLVR), SLIME (rollout functions, reward functions, dynamic filters), OpenRLHF (agent executor modes) -->
 
 ## Overview
 
@@ -73,6 +73,26 @@ This matters because:
 - tool parsing may mutate message structure
 - decode-encode cycles may change tokenization
 - PPO-family training is sensitive to policy/trajectory mismatch
+
+### Execution Mode Should Not Own The Algorithm
+
+<!-- source: OpenRLHF -->
+
+If the framework supports both single-turn and multi-turn execution, keep that choice
+orthogonal to the RL algorithm.
+
+Prefer:
+
+- one trajectory contract
+- one executor abstraction
+- many compatible algorithms
+
+Over:
+
+- one algorithm implementation per executor mode
+
+This keeps agentic extensions from forcing needless rewrites of PPO-, REINFORCE-, or
+GRPO-style training logic.
 
 ### Step-by-Step
 

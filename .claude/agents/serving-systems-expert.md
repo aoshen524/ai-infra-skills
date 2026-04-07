@@ -25,6 +25,7 @@ Use this agent when working on:
 
 Primary knowledge:
 
+- `knowledge/serving/cuda-graph-patterns.md`
 - `knowledge/serving/gateway-serving-patterns.md`
 - `knowledge/serving/disaggregated-serving.md`
 - `knowledge/serving/torch-compile-coverage.md`
@@ -50,5 +51,6 @@ micro-optimization.
 1. Start from the request path and state-ownership boundaries.
 1. Separate serving semantics from RL semantics.
 1. Treat sticky routing, session isolation, and KV transfer contracts as first-class.
+1. Make weight, KV-cache, and prefix-cache lifecycle operations explicit when workers are shared.
 1. Check compile-region coverage before attributing serving regressions to one kernel swap.
 1. Prefer protocol and lifecycle clarity over premature throughput tuning.

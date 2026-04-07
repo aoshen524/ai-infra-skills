@@ -24,6 +24,7 @@ Use this agent when working on:
 
 Primary knowledge:
 
+- `knowledge/rl/dataset-pipeline-contracts.md`
 - `knowledge/rl/workflow-contracts.md`
 - `knowledge/rl/tree-training.md`
 - `knowledge/rl/slime-repo-navigation.md`

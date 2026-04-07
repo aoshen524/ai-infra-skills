@@ -19,8 +19,10 @@ Patterns and workflows for designing and implementing new features in AI infrast
 | Guide | When to Use |
 |-------|-------------|
 | [model-onboard.md](model-onboard.md) | Adding a new model to an inference engine or serving framework |
+| [cuda-graph-integration.md](cuda-graph-integration.md) | Adding or debugging CUDA Graph in a serving path |
 | [add-kernel.md](add-kernel.md) | Implementing a new CUDA kernel (JIT or AOT) |
 | [tilelang-kernel.md](tilelang-kernel.md) | Implementing or debugging a TileLang-based kernel |
+| [dataset-pipeline.md](dataset-pipeline.md) | Designing cached, packable, resume-safe dataset pipelines |
 | [add-workflow.md](add-workflow.md) | Adding an RL workflow, reward function, or rollout function |
 | [slime-workflows.md](slime-workflows.md) | Navigating and extending SLIME workflows and examples |
 | [megatron-memory-estimation.md](megatron-memory-estimation.md) | Planning Megatron TP/PP/EP/CP fits before launch |

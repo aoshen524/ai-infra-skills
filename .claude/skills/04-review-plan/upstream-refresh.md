@@ -22,7 +22,7 @@ Do not use it for:
 
 ## Tracked Upstreams
 
-This workflow tracks 13 upstream repositories:
+This workflow tracks 15 upstream repositories:
 
 1. `AReaL`
 1. `Megatron-LM`
@@ -31,14 +31,16 @@ This workflow tracks 13 upstream repositories:
 1. `flashinfer`
 1. `nccl`
 1. `ollama`
+1. `OpenRLHF`
 1. `sglang`
 1. `slime`
 1. `torchtitan`
+1. `XTuner`
 1. `verl`
 1. `vllm`
 1. `yzlnew/infra-skills`
 
-Treat the first 12 as the main framework set and `yzlnew/infra-skills` as the additional
+Treat the first 14 as the main framework set and `yzlnew/infra-skills` as the additional
 upstream skills source that now feeds this repo.
 
 ## Audit Contract
@@ -189,7 +191,7 @@ Look for:
 - model onboarding and runtime debugging lessons
 - compile-region or backend integration updates
 
-### `AReaL`, `verl`, `slime`
+### `AReaL`, `verl`, `slime`, `OpenRLHF`, `XTuner`
 
 Look for:
 
@@ -197,6 +199,7 @@ Look for:
 - agent-loop contracts
 - online RL serving or gateway integration
 - engine selection and backend integration guidance
+- dataset and sampler contracts for large-scale training
 
 ### `Megatron-LM`, `torchtitan`
 

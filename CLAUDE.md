@@ -19,8 +19,8 @@ Recommended navigation order:
 | Domain | Projects |
 |--------|----------|
 | Inference | vLLM, SGLang, Ollama, TensorRT-LLM |
-| Training | Megatron-LM, PyTorch/torchtitan |
-| RL | veRL, AReaL, SLIME |
+| Training | Megatron-LM, PyTorch/torchtitan, XTuner |
+| RL | veRL, AReaL, SLIME, OpenRLHF |
 | Kernels | FlashAttention, FlashInfer |
 | Communication | NCCL |
 
@@ -39,7 +39,7 @@ ai-infra-skills/
 │   ├── skills/                     # Interactive skills (invoked by user or triggered)
 │   │   ├── 01-server/              # Container dev, GPU mgmt, cluster setup
 │   │   ├── 02-env-source-log/      # Build, CI, CUDA crash debugging
-│   │   ├── 03-design/              # Feature evaluation, architecture design, memory planning
+│   │   ├── 03-design/              # Feature evaluation, architecture design, memory planning, graph integration
 │   │   ├── 04-review-plan/         # Plan review, domain classification
 │   │   ├── 05-profiler/            # Benchmarking, NCU analysis, tuning
 │   │   ├── 06-code-review/         # PR workflow, CI failure triage
@@ -94,10 +94,12 @@ ai-infra-skills/
     │   └── b300-blackwell-notes.md # New-hardware bring-up and software maturity notes
     ├── rl/
     │   ├── algorithm-patterns.md   # PPO-family behavior and tuning
+    │   ├── dataset-pipeline-contracts.md # DataItem, packing, sampler, cache, and resume rules
     │   ├── slime-repo-navigation.md # Fast route to SLIME docs, examples, and source hotspots
     │   ├── workflow-contracts.md   # Workflow / rollout / reward contracts
     │   └── tree-training.md        # Prefix sharing and tree attention patterns
     ├── serving/
+    │   ├── cuda-graph-patterns.md      # CUDA Graph constraints, persistent buffers, capture timing
     │   ├── gateway-serving-patterns.md # Gateway + session + reward writeback
     │   ├── disaggregated-serving.md    # Prefill/decode separation and KV transfer
     │   ├── torch-compile-coverage.md   # Graph-break and custom-op integration checks
@@ -116,10 +118,10 @@ Container-based development, remote GPU backend usage, GPU resource monitoring, 
 Build/install workflows, CI/CD pipeline patterns, CUDA crash debugging with API logging, compute-sanitizer, and kernel printf.
 
 ### 03-design: Architecture & Design
-Feature evaluation frameworks, module design patterns, model onboarding workflows, TileLang kernel planning, SLIME repo navigation, Megatron memory-fit estimation, gateway-based agentic RL integration, and engine expert guidance for inference and training systems.
+Feature evaluation frameworks, module design patterns, model onboarding workflows, dataset-pipeline design, CUDA Graph integration, TileLang kernel planning, SLIME repo navigation, Megatron memory-fit estimation, gateway-based agentic RL integration, and engine expert guidance for inference and training systems.
 
 ### 04-review-plan: Plan & Review
-Structured implementation planning with domain classification, risk assessment, phased execution, and upstream-refresh audits against the tracked source repos.
+Structured implementation planning with domain classification, risk assessment, phased execution, external-knowledge ingest, and upstream-refresh audits against the tracked source repos.
 
 ### 05-profiler: Performance Profiling & Tuning
 Kernel benchmarking (CUPTI/Events), SM90 block size tuning, SASS/MMA analysis, auto-benchmark workflows, and two-phase Chrome trace triage.
@@ -203,6 +205,7 @@ Content is synthesized and generalized from the following projects:
 - FlashAttention / FlashInfer — kernel debugging, benchmarking, SASS analysis
 - SGLang — CI system, auto-benchmark, CUDA crash debugging
 - SGLang field workflows — remote GPU backend usage, auto-driven benchmark search, torch profiler triage, and torch.compile coverage checks
+- Awesome-ML-SYS-Tutorial — structured knowledge-ingest workflow patterns and CUDA Graph serving constraints, persistent-buffer strategy, and deferred capture guidance
 - TileLang — TileLang DSL kernel design patterns, shared-memory layout defaults, and cross-target kernel workflow guidance
 - AReaL — PR review, agents, algorithms, distributed debugging, MoE engine patterns
 - AReaL — proxy gateway integration, online RL session design, tree training
@@ -215,6 +218,8 @@ Content is synthesized and generalized from the following projects:
 - Megatron memory estimator — model-fit estimation and parallelism planning heuristics
 - vLLM — async serving, persistent batch, disaggregated P/D serving
 - Ollama — model packaging, runtime troubleshooting
+- OpenRLHF — RLHF workflow surfaces, rollout-train orchestration, OpenAI-compatible agent execution, and serving-coupled RL engineering patterns
+- XTuner — dataset architecture rules, cacheable tokenization, packing, sampler-resume contracts, and rollout-worker memory lifecycle design signals
 - veRL — agent loop and hybrid training-serving workflow patterns
 - SLIME — reward/rollout/eval dataset extension patterns
 - SLIME docs and examples — repo navigation, source hotspots, and example-family routing
@@ -225,9 +230,9 @@ Content is synthesized and generalized from the following projects:
 - yzlnew/infra-skills — TileLang, Megatron memory-planning, SLIME navigation, TikZ flowchart, and Material You slide skill patterns
 - recent SGLang workflow writeups — remote GPU backend usage, auto-driven benchmark loops, CUDA crash artifact capture, and trace-to-action profiler triage
 
-The maintenance layer also tracks a 13-repo upstream refresh workflow:
+The maintenance layer also tracks a 15-repo upstream refresh workflow:
 
-- 12 core framework repos covered by `COVERAGE_AUDIT.md`
+- 14 core/source repos covered by `COVERAGE_AUDIT.md`
 - `yzlnew/infra-skills` as an additional upstream skills-source repo
 
 See [COVERAGE_AUDIT.md](/home/ubuntu/scipts/verl-grounding/ai-infra-skills/COVERAGE_AUDIT.md) for the repo-to-location coverage matrix.
